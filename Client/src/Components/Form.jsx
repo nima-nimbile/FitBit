@@ -141,10 +141,11 @@ const Form = () => {
           placeholder='Developer'
         />
         <label htmlFor='goal'>What is your goal for having this resepies?</label>
-        <input
+        <textarea
           type="text"
           id="goal"
           name="goal"
+          className='goal'
           value={saveData.goal}
           onChange={changeHandeler}
           placeholder='Burn belly fat and build muscle'
@@ -153,6 +154,7 @@ const Form = () => {
       </form>
       {message && (
         <div>
+          <h1>Welcome ${saveData.firstName}</h1>
           <h3>Generated Meal and Exercise Plan:</h3>
           <p>{message}</p>
         </div>
