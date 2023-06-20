@@ -4,15 +4,86 @@
   left: 0;
   width: 100%;
   background-color: rgb(0, 0, 0);
-  height: 80px;
+  height: 100px;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   z-index: 9999;
+  padding: 0 20px;
 }
 
 .logo {
-  width: 100px;
-  height: 80px;
-  position: fixed;
+  width: 120px;
+  height: 100px;
+}
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.menu-line {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.open {
+  transform: rotate(45deg);
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  padding: 20px;
+  box-sizing: border-box;
+  transition: all 1s ease-in-out;
+  background-image: url(https://steamuserimages-a.akamaihd.net/ugc/269463939060249387/1C0DDB81C78F5DDBCF6B86FEC2D1A072C4FD83B5/);
+  background-size: cover;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.description {
+  color: #fff;
+  text-align: center;
+  padding: 0px 80px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+}
+h3 {
+  margin: 1.5%;
 }

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "../Styles/form.css"
+
 
 const Form = () => {
   const [saveData, setSaveData] = useState({
@@ -14,6 +15,14 @@ const Form = () => {
     goal: ""
   })
   const [message, setMessage] = useState("");
+  const [submit, setSubmit] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    setSubmit(false)
+  }
+
 
   const changeHandeler = (event) => {
     const { name, value } = event.target;
@@ -26,13 +35,24 @@ const Form = () => {
   };
 
 
+
   const getMeesage = async (event) => {
     event.preventDefault();
+    setSubmit(true)
+    setIsLoading(true)
+    let born_statement = ``;
+    if (saveData.goal) {
+      born_statement = `born ${saveData.born}`
+    }
+    let job_statement = ``;
+    if (saveData.job) {
+      job_statement = `Job: ${saveData.job}`
+    }
     const option = {
       method: "POST",
       body: JSON.stringify({
-        message: `Build a week of meal and exercise plan for the following ${saveData.firstName} to achieve their goal. Then, provide one list of complete groceries including the amounts. ${saveData.firstName}: ${saveData.age} year old born ${saveData.born}. weight ${saveData.weight}, height ${saveData.height}, blood type is ${saveData.blood}.
-          Current level of activity: ${saveData.activity}. Job: ${saveData.job}. Goal: ${saveData.goal}`
+        message: `Build a week of meal and exercise plan for the following ${saveData.firstName} to achieve their goal. Then, provide one list of complete groceries including the amounts. ${saveData.firstName}: ${saveData.age} year old ${born_statement}. weight ${saveData.weight}, height ${saveData.heigth}, blood type is ${saveData.blood}.
+          Current level of activity: ${saveData.activity}. ${job_statement}. Goal: ${saveData.goal} `
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -46,122 +66,160 @@ const Form = () => {
       setMessage(data.completion.content);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
 
   return (
-    <div>
-      <form className='form-container' onSubmit={getMeesage}>
-        <label htmlFor='firstName'>First Name</label>
-        <input
-          type="text"
-          name="firstName"
-          id="firstName"
-          value={saveData.firstName}
-          onChange={changeHandeler}
-        />
-        <label htmlFor='age'>Your Age</label>
-        <input
-          type="number"
-          id='age'
-          className='age'
-          name="age"
-          value={saveData.age}
-          onChange={changeHandeler}
-          min="20"
-          max="120"
-        />
-        <label htmlFor="weight"> Your Weight (kg)</label>
-        <input
-          type="number"
-          id='weight'
-          className='weight'
-          name="weight"
-          value={saveData.weight}
-          onChange={changeHandeler}
-          min="30"
-          max="150"
-        />
+    <>
+      {isOpen &&
+        <div className='home'>
+          <h1>Harness the Power of Nutrition for Bootcamp Success!</h1>
+          <button className="button" onClick={toggleMenu}>Get Started</button>
+          <span className='span-buttun'> on Your Health Journey Now!</span>
+        </div>
 
-        <label htmlFor="height">Your Heigth (cm)</label>
-        <input
-          type="number"
-          id='height'
-          className='height'
-          name="height"
-          value={saveData.height}
-          onChange={changeHandeler}
-          min="50"
-          max="300"
-        />
-        <label htmlFor='born' >What was the assigned sex at birth?</label>
-        <select
-          id="born"
-          className='born'
-          name="born"
-          value={saveData.born}
-          onChange={changeHandeler}
-        >
-          <option value="options">--Options--</option>
-          <option value="Female">Female</option>
-          <option value="Male">Male</option>
-        </select>
+      }
 
-        <label htmlFor='blood' >What is your blood type?</label>
-        <select
-          id="blood"
-          className='blood'
-          name="blood"
-          value={saveData.blood}
-          onChange={changeHandeler}
-        >
-          <option value="options">--Options--</option>
-          <option value="Blood Type A">Blood Type A</option>
-          <option value="Blood Type B">Blood Type B</option>
-          <option value="Blood Type AB">Blood Type AB</option>
-          <option value="Blood Type O">Blood Type O</option>
-        </select>
-        <label htmlFor='activity'>Current level of activity</label>
-        <input
-          type="text"
-          id="activity"
-          name="activity"
-          value={saveData.activity}
-          onChange={changeHandeler}
-          placeholder='Run for 30 min a day'
-        />
-        <label htmlFor='job'>What is your current job?</label>
-        <input
-          type="text"
-          id="job"
-          name="job"
-          value={saveData.job}
-          onChange={changeHandeler}
-          placeholder='Developer'
-        />
-        <label htmlFor='goal'>What is your goal for having this resepies?</label>
-        <textarea
-          type="text"
-          id="goal"
-          name="goal"
-          className='goal'
-          value={saveData.goal}
-          onChange={changeHandeler}
-          placeholder='Burn belly fat and build muscle'
-        />
-        <button className='submit' >Submit</button>
-      </form>
-      {message && (
-        <div>
-          <h1>Welcome ${saveData.firstName}</h1>
-          <h3>Generated Meal and Exercise Plan:</h3>
-          <p>{message}</p>
+      {isLoading && (
+        <div className="loading-animation">
+          <h1>Welcome {saveData.firstName}</h1>
+          <div className="loop-wrapper">
+            <div className="mountain"></div>
+            <div className="hill"></div>
+            <div className="tree"></div>
+            <div className="tree"></div>
+            <div className="tree"></div>
+            <div className="rock"></div>
+            <div className="truck"></div>
+            <div className="wheels"></div>
+          </div>
         </div>
       )}
+      {!isLoading && (
+        <>
+          {!submit && <form className='form-container' onSubmit={getMeesage}>
+            <label htmlFor='firstName'>First Name *</label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              value={saveData.firstName}
+              onChange={changeHandeler}
+              required
+            />
+            <label htmlFor='age'>Your Age *</label>
+            <input
+              type="number"
+              id='age'
+              className='age'
+              name="age"
+              value={saveData.age}
+              onChange={changeHandeler}
+              min="20"
+              max="120"
+              required
+            />
+            <label htmlFor="weight"> Your Weight (kg) *</label>
+            <input
+              type="number"
+              id='weight'
+              className='weight'
+              name="weight"
+              value={saveData.weight}
+              onChange={changeHandeler}
+              min="30"
+              max="150"
+              required
+            />
 
-    </div>
-  );
+            <label htmlFor="height">Your Heigth (cm) *</label>
+            <input
+              type="number"
+              id='height'
+              className='height'
+              name="height"
+              value={saveData.height}
+              onChange={changeHandeler}
+              min="50"
+              max="300"
+              required
+            />
+            <label htmlFor='born' >What was the assigned sex at birth? (Optional)</label>
+            <select
+              id="born"
+              className='born'
+              name="born"
+              value={saveData.born}
+              onChange={changeHandeler}
+            >
+              <option className='drop-down' value="options">--Options--</option>
+              <option className='drop-down' value="Female">Female</option>
+              <option className='drop-down' value="Male">Male</option>
+            </select>
+
+            <label htmlFor='blood' >What is your blood type? *</label>
+            <select
+              id="blood"
+              className='blood'
+              name="blood"
+              value={saveData.blood}
+              onChange={changeHandeler}
+              required
+            >
+              <option className='drop-down' value="options">--Options--</option>
+              <option className='drop-down' value="Blood Type A">Blood Type A</option>
+              <option className='drop-down' value="Blood Type B">Blood Type B</option>
+              <option className='drop-down' value="Blood Type AB">Blood Type AB</option>
+              <option className='drop-down' value="Blood Type O">Blood Type O</option>
+            </select>
+            <label htmlFor='activity'>Current level of activity *</label>
+            <input
+              type="text"
+              id="activity"
+              name="activity"
+              value={saveData.activity}
+              onChange={changeHandeler}
+              placeholder='Your Activity'
+              required
+            />
+            <label htmlFor='job'>What is your current job? (Optional)</label>
+            <input
+              type="text"
+              id="job"
+              name="job"
+              value={saveData.job}
+              onChange={changeHandeler}
+              placeholder='Your Job'
+            />
+            <label htmlFor='goal'>What is your goal for having this resepies? *</label>
+            <textarea
+              type="text"
+              id="goal"
+              name="goal"
+              className='goal'
+              value={saveData.goal}
+              onChange={changeHandeler}
+              placeholder='Your Goal'
+              required
+            />
+            <button className='submit' >Submit</button>
+
+          </form>
+          }
+
+          {message && (
+            <div className='message' >
+              <h3>Generated Meal and Exercise Plan:</h3>
+              <p>{message}</p>
+            </div>
+          )}
+        </>
+      )}
+    </>
+  )
 };
 
 export default Form;
