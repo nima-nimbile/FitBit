@@ -18,6 +18,17 @@ const Form = () => {
   const [submit, setSubmit] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
+  const [saveAsFile, setSaveAsFile] = useState(false);
+
+  const saveMessageAsFile = () => {
+    const element = document.createElement("a");
+    const file = new Blob([message], { type: "text/plain" });
+    element.href = URL.createObjectURL(file);
+    element.download = "message.txt";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     setSubmit(false)
@@ -64,6 +75,7 @@ const Form = () => {
       const data = await response.json();
       console.log(data, "data");
       setMessage(data.completion.content);
+      setSaveAsFile(true);
     } catch (error) {
       console.error(error);
     } finally {
@@ -214,6 +226,9 @@ const Form = () => {
             <div className='message' >
               <h3>Generated Meal and Exercise Plan:</h3>
               <p>{message}</p>
+              {saveAsFile && (
+                <button className='submit' onClick={saveMessageAsFile}>Save as File</button>
+              )}
             </div>
           )}
         </>
