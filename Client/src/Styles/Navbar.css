@@ -87,3 +87,48 @@
 h3 {
   margin: 1.5%;
 }
+@media only screen and (max-width: 767px) {
+  .nav-container {
+    height: 80px;
+    padding: 0 10px;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .menu-icon {
+    width: 24px;
+    height: 16px;
+  }
+
+  .menu-line {
+    height: 1px;
+  }
+
+  .menu-content {
+    top: 80px;
+    padding: 10px;
+    overflow-y: auto; 
+    max-height: calc(100vh - 80px);
+  }
+
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+  }
+
+  .description {
+    padding: 0px 40px;
+  }
+
+  .social-icons img {
+    width: 24px;
+    height: 24px;
+  }
+
+  h3 {
+    margin: 1%;
+  }
+}
