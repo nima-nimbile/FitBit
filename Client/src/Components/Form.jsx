@@ -71,7 +71,7 @@ const Form = () => {
     };
 
     try {
-      const response = await fetch('https://fitfolio-server.onrender.com:5000/completion', option);
+      const response = await fetch('https://fitfolio-server.onrender.com/completion', option);
       const data = await response.json();
       console.log(data, "data");
       setMessage(data.completion.content);
