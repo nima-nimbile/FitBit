@@ -1,13 +1,10 @@
 {
   "name": "server",
-  "homepage": "http://nima-nimbile.github.io/Fitfolio",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "npm i"
   },
   "author": "",
