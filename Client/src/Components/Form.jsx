@@ -182,10 +182,10 @@ const Form = () => {
               required
             >
               <option className='drop-down' value="options">--Options--</option>
-              <option className='drop-down' value="Blood Type A">Blood Type A</option>
-              <option className='drop-down' value="Blood Type B">Blood Type B</option>
-              <option className='drop-down' value="Blood Type AB">Blood Type AB</option>
-              <option className='drop-down' value="Blood Type O">Blood Type O</option>
+              <option className='drop-down' value="Blood Type A">A</option>
+              <option className='drop-down' value="Blood Type B">B</option>
+              <option className='drop-down' value="Blood Type AB">AB</option>
+              <option className='drop-down' value="Blood Type O">O</option>
             </select>
             <label htmlFor='activity'>Current level of activity *</label>
             <input
