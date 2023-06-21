@@ -3,6 +3,7 @@ import "../Styles/Navbar.css";
 import logo from "/Public/Logo-1.jpg"
 import linkedin from "/Public/linkedin-icon.png"
 import GitHub from "/Public/github-icon.png"
+import profile from "/Public/profile-picture.jpg"
 
 
 const Navbar = () => {
@@ -23,7 +24,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="menu-content">
           <div className="profile">
-            <img className="profile-picture" src="./Public/profile-picture.jpg" alt="Profile" />
+            <img className="profile-picture" src={profile} alt="Profile" />
             <h3>About Me:</h3>
             <p className="description">My name is Nima. I graduated from Lighthouse Labs' Bootcamp in April 2023, where I honed my skills as a FullStack developer. Throughout the program, I gained expertise in a wide range of technologies, including React, CSS, HTML, Node.js, PostgreSQL, JavaScript, and Express. As a passionate junior developer, I am now eager to apply my knowledge and contribute to exciting projects in the field.</p>
             <h3>Website Overview:</h3>
