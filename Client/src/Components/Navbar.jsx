@@ -6,6 +6,7 @@ import GitHub from "/Public/github-icon.png"
 import profile from "/Public/profile-picture.jpg"
 
 
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,7 +21,9 @@ const Navbar = () => {
         <div className={`menu-line ${isOpen ? 'open' : ''}`}></div>
         <div className={`menu-line ${isOpen ? 'open' : ''}`}></div>
       </div>
+      <a href="/" className="logo-link">
       <img className="logo" src={logo} alt="Logo" />
+      </a>
       {isOpen && (
         <div className="menu-content">
           <div className="profile">
