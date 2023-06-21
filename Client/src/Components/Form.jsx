@@ -97,9 +97,9 @@ const Form = () => {
 
       {isLoading && (
         <div className="loading-animation">
-          <h1>Welcome {saveData.firstName}</h1>
-          <h2>LOADING...</h2>
-          <h3>Sorry no elevator music</h3>
+          <h1 className='H'>Welcome {saveData.firstName}</h1>
+          <h2 className='H'>LOADING...</h2>
+          <h3 className='H'>Sorry no elevator music</h3>
           <div className="loop-wrapper">
             <div className="mountain"></div>
             <div className="hill"></div>
