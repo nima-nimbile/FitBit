@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import "../Styles/Navbar.css";
+import logo from "/Public/Logo-1.jpg"
+import linkedin from "/Public/linkedin-icon.png"
+import GitHub from "/Public/github-icon.png"
 
 
 const Navbar = () => {
@@ -16,7 +19,7 @@ const Navbar = () => {
         <div className={`menu-line ${isOpen ? 'open' : ''}`}></div>
         <div className={`menu-line ${isOpen ? 'open' : ''}`}></div>
       </div>
-      <img className="logo" src="./Public/Logo-1.png" alt="Logo" />
+      <img className="logo" src={logo} alt="Logo" />
       {isOpen && (
         <div className="menu-content">
           <div className="profile">
@@ -28,10 +31,10 @@ const Navbar = () => {
           </div>
           <div className="social-icons">
             <a href="https://www.linkedin.com/in/nima-mohamed/" target="_blank" rel="noopener noreferrer">
-              <img src="./Public/linkedin-icon.png" alt="LinkedIn" />
+              <img src={linkedin} alt="LinkedIn" />
             </a>
             <a href="https://github.com/nima-nimbile" target="_blank" rel="noopener noreferrer">
-              <img src="./Public/github-icon.png" alt="GitHub" />
+              <img src={GitHub} alt="GitHub" />
             </a>
           </div>
         </div>
