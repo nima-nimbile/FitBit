@@ -14,8 +14,9 @@ body {
   background-color: rgba(255,255,255,0.07);
   background-image: url(https://cdn.wallpapersafari.com/98/5/hLXYWm.jpg);
   background-size: cover;
+  /* background-repeat: no-repeat; */
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   min-height: 700px;
   margin-top: 100px; 
 }
