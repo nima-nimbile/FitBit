@@ -9,6 +9,8 @@ h1 {
   padding: 20px 90px;
   letter-spacing: 2px;
   line-height: 40px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .H {
@@ -27,7 +29,7 @@ h1 {
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  padding: 10px 20px;
+  padding: 10px 30px;
   margin-top: 145px;
   margin-bottom: 20%;
 
@@ -38,6 +40,7 @@ form * {
   letter-spacing: 0.5px;
   outline: none;
   border: none;
+  margin-bottom: 1%;
 }
 
 .label {
@@ -98,7 +101,6 @@ option {
 .button {
   min-width: 300px;
   min-height: 60px;
-  font-family: 'Nunito', sans-serif;
   font-size: 22px;
   text-transform: uppercase;
   letter-spacing: 1.3px;
@@ -187,15 +189,13 @@ option {
   font-weight: 700;
   color: #313133;
   background: #4FD1C5;
-  background: linear-gradient(90deg, rgb(77, 75, 75) 0%, rgba(79, 209, 197, 1) 100%);
   border: none;
   border-radius: 1000px;
   transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
   outline: none;
   position: relative;
-  padding: 10px;
-  margin: 1.5rem
+  padding: 10px 5px;
 }
 
 .submit::before {
@@ -267,7 +267,7 @@ option {
   position: relative;
   display: block;
   width: 600px;
-  height: 250px;
+  height: 150px;
   overflow: hidden;
   border-bottom: 3px solid #fff;
   color: #fff;
@@ -492,7 +492,7 @@ option {
 @media only screen and (max-width: 768px) {
   .form-container {
     width: 90%;
-    margin-top: 100px;
+    margin-top: 210px;
   }
 
   .button,

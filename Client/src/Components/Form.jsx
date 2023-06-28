@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import "../Styles/form.css"
+import "../Styles/form.css";
+import "../Styles/table.css";
+import PlanTable from './PlanTable';
 
 
 const Form = () => {
@@ -19,6 +21,7 @@ const Form = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [saveAsFile, setSaveAsFile] = useState(false);
+  
 
   const saveMessageAsFile = () => {
     const element = document.createElement("a");
@@ -62,8 +65,8 @@ const Form = () => {
     const option = {
       method: "POST",
       body: JSON.stringify({
-        message: `Build a week of meal and exercise plan for the following ${saveData.firstName} to achieve their goal. Then, provide one list of complete groceries including the amounts. ${saveData.firstName}: ${saveData.age} year old ${born_statement}. weight ${saveData.weight}, height ${saveData.heigth}, blood type is ${saveData.blood}.
-          Current level of activity: ${saveData.activity}. ${job_statement}. Goal: ${saveData.goal} `
+        message: `Build a Monday to Sunday of meal and exercise plan for the following person to achieve their goal. Build it in a way that it does not include any of these words meal, plan, List. Then, provide one list of complete groceries including the amounts. ${saveData.firstName}: ${saveData.age} year old ${born_statement}. weight ${saveData.weight}, height ${saveData.heigth}, blood type is ${saveData.blood}.
+          Current level of activity: ${saveData.activity}. ${job_statement}. Goal: ${saveData.goal}. `
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -73,7 +76,6 @@ const Form = () => {
     try {
       const response = await fetch('https://fitfolio-server.onrender.com/completion', option);
       const data = await response.json();
-      console.log(data, "data");
       setMessage(data.completion.content);
       setSaveAsFile(true);
     } catch (error) {
@@ -225,11 +227,13 @@ const Form = () => {
           }
 
           {message && (
-            <div className='message' >
-              <h3>Generated Meal and Exercise Plan:</h3>
-              <p>{message}</p>
+            <div className='last-container'>
+          <PlanTable 
+          key={saveData.firstName}
+          message={message}
+          />
               {saveAsFile && (
-                <button className='submit' onClick={saveMessageAsFile}>Save as File</button>
+                <button className='saveFile' onClick={saveMessageAsFile}>Save as File</button>
               )}
             </div>
           )}

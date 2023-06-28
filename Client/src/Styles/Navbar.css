@@ -10,6 +10,7 @@
   justify-content: space-between;
   z-index: 9999;
   padding: 0 20px;
+  
 }
 
 .logo {
@@ -45,12 +46,13 @@
   top: 100px;
   left: 0;
   width: 100%;
+  /* max-height: 500px; */
   background-color: rgb(0, 0, 0);
-  padding: 20px;
   box-sizing: border-box;
   transition: all 1s ease-in-out;
   background-image: url(https://steamuserimages-a.akamaihd.net/ugc/269463939060249387/1C0DDB81C78F5DDBCF6B86FEC2D1A072C4FD83B5/);
   background-size: cover;
+  overflow-y: auto;
 }
 
 .profile {
@@ -71,7 +73,10 @@
 .description {
   color: #fff;
   text-align: center;
-  padding: 0px 80px;
+  padding: 0px 200px;
+  line-height: 30px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .social-icons {
