@@ -11,7 +11,6 @@ justify-content: center;
   margin-left: auto;
   line-height: 30px;
   padding: 0px 20px;
-  overflow-y: auto;
 }
 
 table {
@@ -21,10 +20,10 @@ table {
 }
 
 .day-table {
-  background-color: #451616;
+  background-color: #303434;
 }
 .meal-table {
-  background-color: rgb(113 20 3);;
+  background-color: rgb(2, 171, 157);;
 }
 
 th, td {
@@ -32,20 +31,13 @@ th, td {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: darkslategray;
+  background-color: rgb(0, 0, 0);
 }
 
 th {
   font-weight: bold;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #451616;
-}
-
-tbody tr:hover {
-  background-color: #4c2222;
-}
 .saveFile {
   min-width: 1290px;
   min-height: 30px;
@@ -63,8 +55,6 @@ tbody tr:hover {
   outline: none;
   position: relative;
   padding: 10px 5px;
-  margin-left: 2%;
-  margin-right: auto;
   margin-bottom: 20px;
 }
 .saveFile::before {
