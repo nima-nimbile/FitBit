@@ -21,7 +21,7 @@ const Form = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [saveAsFile, setSaveAsFile] = useState(false);
-  
+
 
   const saveMessageAsFile = () => {
     const element = document.createElement("a");
@@ -228,10 +228,10 @@ const Form = () => {
 
           {message && (
             <div className='last-container'>
-          <PlanTable 
-          key={saveData.firstName}
-          message={message}
-          />
+              <PlanTable
+                key={saveData.firstName}
+                message={message}
+              />
               {saveAsFile && (
                 <button className='saveFile' onClick={saveMessageAsFile}>Save as File</button>
               )}
