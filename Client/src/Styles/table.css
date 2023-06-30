@@ -1,9 +1,9 @@
-.last-container {
+/* .last-container {
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-}
+} */
 .table-container {
   margin-top: 5px;
   margin-right: 20px;
@@ -11,9 +11,15 @@ justify-content: center;
   margin-left: auto;
   line-height: 30px;
   padding: 0px 20px;
+  font-weight: bold;
+ 
 }
 
-table {
+.Grocery-table {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.plan-table {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #ccc;
@@ -23,10 +29,11 @@ table {
   background-color: #303434;
 }
 .meal-table {
-  background-color: rgb(2, 171, 157);;
+  background-color: rgb(2, 171, 157);
+  
 }
 
-th, td {
+.Grocery-table, th, td {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -39,7 +46,7 @@ th {
 }
 
 .saveFile {
-  min-width: 1290px;
+  min-width: 1200px;
   min-height: 30px;
   font-family: 'Nunito', sans-serif;
   font-size: 22px;
@@ -95,6 +102,8 @@ th {
   top: 0;
   border-radius: 10px;
 }
+
+
 @keyframes glowing {
   0% {
     background-position: 0 0;

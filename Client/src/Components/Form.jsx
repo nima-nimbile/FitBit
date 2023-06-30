@@ -66,7 +66,7 @@ const Form = () => {
       method: "POST",
       body: JSON.stringify({
         message: `Build a Monday to Sunday of meal and exercise plan for the following person to achieve their goal. Build it in a way that it does not include any of these words meal, plan, List. Then, provide one list of complete groceries including the amounts. ${saveData.firstName}: ${saveData.age} year old ${born_statement}. weight ${saveData.weight}, height ${saveData.heigth}, blood type is ${saveData.blood}.
-          Current level of activity: ${saveData.activity}. ${job_statement}. Goal: ${saveData.goal}. `
+          Current level of activity: ${saveData.activity}. ${job_statement}. Goal: ${saveData.goal}. Format the response in json and return the daily plan in 'schedule' key, and the Grocery list in 'groceries' key. Each item in groceries should have two keys 'item' and 'amount'`
       }),
       headers: {
         'Content-Type': 'application/json'
