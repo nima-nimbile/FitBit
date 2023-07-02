@@ -18,9 +18,7 @@ function PlanTable(props) {
         </thead>
         <tbody>
           {days.map((day, index) => {
-            console.log("jsonData", jsonData)
             const daySchedule = jsonData.schedule[day];
-            console.log("schedule", daySchedule)
             return (
               <tr key={index}>
                 <td className='day-table'>{day}</td>
