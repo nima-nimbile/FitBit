@@ -18,14 +18,16 @@ function PlanTable(props) {
         </thead>
         <tbody>
           {days.map((day, index) => {
-            const { breakfast, lunch, dinner, exercise } = jsonData.schedule[day];
+            console.log("jsonData", jsonData)
+            const daySchedule = jsonData.schedule[day];
+            console.log("schedule", daySchedule)
             return (
               <tr key={index}>
                 <td className='day-table'>{day}</td>
-                <td className='meal-table'>Breakfast: {breakfast}</td>
-                <td className='meal-table'>Lunch: {lunch}</td>
-                <td className='meal-table'>Dinner: {dinner}</td>
-                <td className='meal-table'>Exercise: {exercise}</td>
+                {daySchedule.Breakfast && <td className='meal-table'>Breakfast: {daySchedule.Breakfast}</td>}
+                {daySchedule.Lunch && <td className='meal-table'>Lunch: {daySchedule.Lunch}</td>}
+                {daySchedule.Dinner && <td className='meal-table'>Dinner: {daySchedule.Dinner}</td>}
+                {daySchedule.Exercise && <td className='meal-table'>Exercise: {daySchedule.Exercise}</td>}
               </tr>
             );
           })}
@@ -39,7 +41,7 @@ function PlanTable(props) {
               {groceryList.map((grocery, index) => {
                 return (
                   <tr key={index}>
-                    <td className='meal-table'>{grocery.item}: {grocery.amount}</td>
+                    {grocery.item && grocery.amount && <td className='meal-table'>{grocery.item}: {grocery.amount}</td>}
                   </tr>
                 );
               })}

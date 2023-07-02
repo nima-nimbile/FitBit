@@ -21,6 +21,7 @@ const Form = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [saveAsFile, setSaveAsFile] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
 
   const saveMessageAsFile = () => {
@@ -66,7 +67,7 @@ const Form = () => {
       method: "POST",
       body: JSON.stringify({
         message: `Build a Monday to Sunday of meal and exercise plan for the following person to achieve their goal. Build it in a way that it does not include any of these words meal, plan, List. Then, provide one list of complete groceries including the amounts. ${saveData.firstName}: ${saveData.age} year old ${born_statement}. weight ${saveData.weight}, height ${saveData.heigth}, blood type is ${saveData.blood}.
-          Current level of activity: ${saveData.activity}. ${job_statement}. Goal: ${saveData.goal}. Format the response in json and return the daily plan in 'schedule' key, and the Grocery list in 'groceries' key. Each item in groceries should have two keys 'item' and 'amount'`
+          Current level of activity: ${saveData.activity}. ${job_statement}. Goal: ${saveData.goal}. Format the response in json and return the daily plan in 'schedule' key, and the Grocery list in 'groceries' key. Each item in groceries should have two keys 'item' and 'amount'. Schedule should contain the following keys: Breakfast, Lunch, Dinner, Exercise`
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -80,6 +81,7 @@ const Form = () => {
       setSaveAsFile(true);
     } catch (error) {
       console.error(error);
+      setErrorMessage("It seems our AI friend is taking a coffee break. Please come back later.")
     } finally {
       setIsLoading(false);
     }
@@ -101,7 +103,6 @@ const Form = () => {
         <div className="loading-animation">
           <h1 className='H'>Welcome {saveData.firstName}</h1>
           <h2 className='H'>Please Wait</h2>
-          <h3 className='H'>Sorry no elevator music</h3>
           <div className="loop-wrapper">
             <div className="mountain"></div>
             <div className="hill"></div>
@@ -235,6 +236,15 @@ const Form = () => {
               {saveAsFile && (
                 <button className='saveFile' onClick={saveMessageAsFile}>Save as File</button>
               )}
+            </div>
+          )}
+
+          {errorMessage && (
+            <div className="loading-animation">
+              <h1 className='H'>Sorry {saveData.firstName},</h1>
+              <h1 className='error-message'>{errorMessage}</h1>
+              <div className="coffee-cup"></div>
+
             </div>
           )}
         </>
