@@ -4,7 +4,8 @@ import logo from "/Public/Logo-1.jpg"
 import linkedin from "/Public/linkedin-icon.png"
 import GitHub from "/Public/github-icon.png"
 import profile from "/Public/profile-picture.jpg"
-import Resume from "/Public/resume.png"
+import ResumeIcon from "/Public/resume.png"
+import Resume from "/Public/NimaMohamed.pdf"
 
 
 
@@ -41,8 +42,8 @@ const Navbar = () => {
             <a href="https://github.com/nima-nimbile" target="_blank" rel="noopener noreferrer">
               <img src={GitHub} alt="GitHub" />
             </a>
-            <a href="./Public/NimaMohamed.pdf" download>
-              <img src={Resume} alt="Resume" />
+            <a href={Resume} download>
+              <img src={ResumeIcon} alt="Resume" />
             </a>
           </div>
         </div>
