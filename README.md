@@ -15,7 +15,7 @@ In the project directory, you can run:
 
 Install dependencies with `npm install`.
 
-### `npm start`
+### `npm run preview`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
